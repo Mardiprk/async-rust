@@ -11,3 +11,16 @@ This is a basic introduction to asynchronous programming in Rust using the Tokio
 ### 📦 Run
 ```bash
 cargo run
+
+# Lesson 2: `tokio::spawn` for Concurrent Tasks
+
+This lesson demonstrates how to run multiple async tasks concurrently using Tokio.
+
+## 🔧 Concepts
+- Spawning tasks with `tokio::spawn`
+- Awaiting multiple tasks
+- Non-blocking async execution
+
+## ▶️ Run
+```bash
+cargo run
