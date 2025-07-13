@@ -1,26 +1,25 @@
 use tokio::time::{sleep, Duration};
+use tokio::{join, select};
 
 #[tokio::main]
 async fn main(){
+    let (res1, res2) = join!(
+        do_slow_task("Pasta", 5),
+        do_slow_task("maggie", 2),
+    );
 
-    let task1 = tokio::spawn(async{
-        println!("🍜 Cooking Ramen!");
-        sleep(Duration::from_secs(2)).await;
-        println!("🍜 Ramen Cooked!");
-        "Delicious Ramen" 
-    });
+    println!("Join Done {res1}, {res2}");
 
-    let task2 = tokio::spawn(async{
-        println!("☕ Brewing coffee");
-        sleep(Duration::from_secs(5)).await;
-        println!("☕ Coffee Ready");
-        "Tasty Coffee"
-    });
+    let selected = select!{
+        val1 = do_slow_task("Donut", 3) => val1,
+        val2 = do_slow_task("Poha", 4) => val2
+    };
 
-    let res1 = task1.await.unwrap();
-    let res2 = task2.await.unwrap();
+    println!("Slected Done: {selected}");
+}
 
-    println!("📦 Results - Task 1: {:?}, Task 2: {:?}", res1, res2);
-    println!("🎉 All tasks done!");
-
+async fn do_slow_task(name: &str, seconds: u64) -> String{
+    println!("Starting {name} in ({})s", seconds);
+    sleep(Duration::from_secs(seconds)).await;
+    format!("Finished {name}")
 }

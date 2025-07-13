@@ -1,26 +1,13 @@
-# Lesson 1: Async Function and Await
+🔰 Starting Lesson 4
 
-This is a basic introduction to asynchronous programming in Rust using the Tokio runtime.
+👉 Using `tokio::join!` (waits for ALL):
+⏳ Starting 🍝 Pasta (3s)
+⏳ Starting 🍵 Tea (2s)
+✅ Join done: ✅ Finished 🍝 Pasta!, ✅ Finished 🍵 Tea!
 
-### ✅ Concepts Covered
-- `async fn` in Rust
-- `.await` keyword
-- Using `#[tokio::main]` to run async code
-- Non-blocking sleep
+👉 Using `tokio::select!` (returns FIRST done):
+⏳ Starting 🍩 Donut (3s)
+⏳ Starting 🥤 Juice (1s)
+🎯 Select done: ✅ Finished 🥤 Juice!
 
-### 📦 Run
-```bash
-cargo run
-
-# Lesson 2: `tokio::spawn` for Concurrent Tasks
-
-This lesson demonstrates how to run multiple async tasks concurrently using Tokio.
-
-## 🔧 Concepts
-- Spawning tasks with `tokio::spawn`
-- Awaiting multiple tasks
-- Non-blocking async execution
-
-## ▶️ Run
-```bash
-cargo run
+🎉 Lesson 4 complete!
